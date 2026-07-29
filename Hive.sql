@@ -8,6 +8,8 @@ DESCRIBE <table_name>;
 
 DROP TABLE IF EXISTS <table_name>;
 
+ALTER TABLE <current_table_name> RENAME TO <new_table_name>;
+
 CREATE EXTERNAL TABLE IF NOT EXISTS <table_name>
 STORED AS ORC
 AS SELECT * FROM <table_name2>;
@@ -45,6 +47,6 @@ to_date(from_unixtime(CAST(header_timestamp / 1000 AS BIGINT))) AS converted_dat
 from_unixtime(CAST(header_timestamp / 1000 AS BIGINT)) AS converted_timestamp
 FROM <table_name>
 
-SELECT CAST(report_date AS STRING FORMAT 'YYYY-MM') AS report_date
+SELECT CAST(report_date AS STRING FORMAT 'YYYY-MM') AS report_date FROM
 
-SELECT date_format(report_date, 'yyyy-MM') AS report_date
+SELECT date_format(report_date, 'yyyy-MM') AS report_date FROM
